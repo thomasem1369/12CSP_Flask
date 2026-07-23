@@ -1,0 +1,28 @@
+erDiagram
+
+    BUSINESS ||--|| BUSINESS-ORIGINS : "has status info"
+    VENDORS ||--|{ BUSINESS : "owns"
+
+
+    BUSINESS{
+        Integer business_id PK "Auto Increment, Unique, Not Null"
+        Integer vendor_id FK "Unique, Not Null"
+        Text business_name "Unique, Not Null"
+        Text locations
+    }
+    
+    BUSINESS-ORIGINS {
+        Integer business_id FK "Auto Increment, Unique, Not Null"
+        Text is_nz_business "Not Null"
+        Text is_handmade_nz "Not Null"
+        Text is_designed_nz "Not Null"
+        Text is_assembled_nz "Not Null"
+    }
+
+    VENDORS{
+        Integer vendor_id PK "Auto Increment, Not Null"
+        Text vendor_name "Not Null"
+        Integer contact_number "Unique"
+    }
+    
+    
