@@ -9,16 +9,29 @@
     <header>
         <h1>Vendors</h1>
     </header>
+    <!-- Navigation bar -->
     <nav>
         <ul>
             <li>
-                <a href="/">Home</a>
+                <a href="about.html">Vendors</a>
+                <a href="/">Edit</a>
+                <a href="/">Add</a>
+                <a href="/">Delete</a>
             </li>
         </ul>
     </nav>
+    <!-- Search bar -->
+    <div class="search">
+        <form method="get" action="/">
+        <span class="material-symbols-outlined">search</span>
+        <input class="search-input" name="search" type="search" placeholder="Search Vendor">
+        <input type="submit" value="Search">
+        </form>
+    </div>
     <main>
         <h2>Vendors</h2>
         <p>Hello World</p>
+        <p>{{search}}</p>
     </main>
     <footer>
         <p>&copy; Emma Thomas 2026</p>

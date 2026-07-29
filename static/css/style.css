@@ -2,3 +2,14 @@ body {
     background-color: #080937ff;
     color: #ffffff;
 }
+
+.search{
+    display:flex;
+    align-items: center;
+    background: #ffffff;
+}
+
+.search-input{
+    font-size: 16px;
+    color: #84939b;
+}
