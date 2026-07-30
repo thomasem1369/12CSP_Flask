@@ -16,14 +16,13 @@ erDiagram
     }
 
     BUSINESS_VENDORS{
-        Integer business_id PK "Auto Increment, Unique, Not Null"
-        Integer vendor_id FK "Not Null"
+        Integer business_id FK
+        Integer vendor_id FK
     }
 
-
     BUSINESS_LOCATIONS {
-        Integer business_id FK "Not Null"
-        Integer location_id FK "Not Null"
+        Integer business_id FK 
+        Integer location_id FK 
     }
 
     LOCATIONS{
