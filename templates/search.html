@@ -17,15 +17,24 @@
                 <a href="/">Edit</a>
                 <a href="/">Add</a>
                 <a href="/">Delete</a>
-                <a href="/search">Search</a>
             </li>
         </ul>
     </nav>
- 
+    <!-- Search bar -->
+    <div class="search">
+        <form method="get" action="/search">
+        <span class="material-symbols-outlined">search</span>
+        <input class="search-input" name="search" type="search" placeholder="Search Vendor">
+        <input type="submit" value="Search">
+        </form>
+    </div>
     <main>
         <h2>Vendors</h2>
         <p>Hello World</p>
-        <p>{{search}}</p>
+        <p></p>
+        {% for row in result %}
+        <p>{{row['business_id']}} {{row['business_name']}}</p>
+        {% endfor %}
     </main>
     <footer>
         <p>&copy; Emma Thomas 2026</p>
