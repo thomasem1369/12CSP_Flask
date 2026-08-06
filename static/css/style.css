@@ -3,6 +3,50 @@ body {
     color: #ffffff;
 }
 
+.nav_class > ul {
+    background-color: rgb(4, 6, 102);
+    color: #ffffff;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.nav_class > ul >li {
+    list-style-type:none;
+    display: inline-block;
+    padding: 5px 25px;
+    position: relative;
+}
+
+.nav_class > ul >li:hover {
+    background-color: #ffffff;
+}
+
+ul.sub-menu{
+    position:absolute;
+    background-color: #ffffff;
+    list-style-type: none;
+    width: 125px;
+    padding-left: 0px;
+    margin-left: -25px;
+    padding-top: 5px;
+    opacity: 0;
+}
+
+ul.sub-menu li{
+    padding-left:25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav_class li:hover .sub-menu{
+    opacity: 1;
+}
+
+ul.sub-menu li hover{
+    color: white;
+    background-color: #444444;
+}
+
 .search{
     display:flex;
     align-items: center;

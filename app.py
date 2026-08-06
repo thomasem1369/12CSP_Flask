@@ -10,7 +10,7 @@ def create_connection(db_file):
 
     try:
         connection = sqlite3.connect(db_file)
-        connection.row_factory = sqlite3.Row
+        connection.row_factory = sqlite3.Row # This allows us to access the columns by name instead of index
         return connection
     except Error as e:
         print(e)
@@ -27,7 +27,7 @@ def render_search():
     cursor = db.cursor()
     cursor.execute("SELECT * from business WHERE business_name = ?", (search_query,))
     rows = cursor.fetchall()
-    result = [dict(row) for row in rows]
+    result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
     print(result)
     db.close()
     return render_template('search.html', result=result)
