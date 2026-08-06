@@ -32,6 +32,29 @@ def render_search():
     db.close()
     return render_template('search.html', result=result)
 
+@app.route('/add_business')
+def render_add_business():
+    return render_template('add_business.html')
+
+@app.route('/add_vendor')
+def render_add_vendor():
+    return render_template('add_vendor.html')
+
+@app.route('/link_business_vendor')
+def render_link_business_vendor():
+    return render_template('link_business_vendor.html')
+
+@app.route('/business_table')
+def render_business_table():   
+    return render_template('business_table.html')
+
+@app.route('/vendor_table')
+def render_vendor_table():
+    return render_template('vendor_table.html')
+
+@app.route('/locations_table')
+def render_locations_table():
+    return render_template('locations_table.html') 
 
 
 if __name__ == "__main__":
