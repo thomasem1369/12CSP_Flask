@@ -3,6 +3,16 @@ body {
     color: #ffffff;
 }
 
+.nav_class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(4, 6, 102);
+}
+
 .nav_class > ul {
     background-color: rgb(4, 6, 102);
     color: #ffffff;
@@ -46,6 +56,52 @@ ul.sub-menu li hover{
     color: white;
     background-color: #444444;
 }
+
+/* Intro Section Styles */
+
+.intro{
+    max-width: 800px;
+    margin: 0 auto;
+    padding; 20px;
+    background-color: #ffffff;
+    color: #080937;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+.intro h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.intro p{
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Homepage Section Styles */
+
+.homepage > h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.homepage > p{
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Footer Section Styles */
+footer{
+    background-color: #080937;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Search Section Styles */
 
 .search{
     display:flex;
