@@ -1,39 +1,13 @@
 erDiagram
 
-    VENDORS ||--o{BUSINESS_VENDORS : "has"
-    BUSINESS ||--o{BUSINESS_VENDORS : "has"
-    BUSINESS ||--o{ BUSINESS_LOCATIONS: "has"
-    LOCATIONS ||--o{ BUSINESS_LOCATIONS: "has"
-
-
-    BUSINESS{
-        Integer business_id PK "Auto Increment, Unique, Not Null"
-        Text business_name "Unique, Not Null"
+    VENDOR_DATABASE {
+        Integer vendor_id PK "Auto Increment, Unique, Not Null"
+        Text vendor_name "Not Null"
+        Integer contact_number "Unique"
+        Text business_name "Not Null"
+        Text locations "Not Null"
         Text nz_business "Not Null"
         Text handmade_nz "Not Null"
         Text designed_nz "Not Null"
         Text assembled_nz "Not Null"
     }
-
-    BUSINESS_VENDORS{
-        Integer business_id FK
-        Integer vendor_id FK
-    }
-
-    BUSINESS_LOCATIONS {
-        Integer business_id FK 
-        Integer location_id FK 
-    }
-
-    LOCATIONS{
-        Integer location_id PK "Auto Increment, Unique, Not Null"
-        Text location_name "Not Null"
-    }
-
-    VENDORS{
-        Integer vendor_id PK "Auto Increment, Not Null"
-        Text vendor_name "Not Null"
-        Integer contact_number 
-    }
-    
-    

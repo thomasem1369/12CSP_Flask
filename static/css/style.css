@@ -1,7 +1,30 @@
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: #080937ff;
     color: #ffffff;
+    display: flex;
+    flex-direction: column;
 }
+
+/* Header Section Styles */
+.header {
+    background-color: #ffffff;
+    color: #080937ff;
+    padding: 20px;
+    margin-left: 50px;
+    text-align: left;
+}
+
+/* Fills all remaining space */
+main {
+    flex: 1;
+} 
+
+
+/* Nav Bar Styles */
 
 .nav_class {
     display: flex;
@@ -10,12 +33,12 @@ body {
     margin: 5;
     height: 50px;
     width: 100%;
-    background-color: rgb(4, 6, 102);
+    background-color: #ffffff;
 }
 
 .nav_class > ul {
-    background-color: rgb(4, 6, 102);
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #080937ff;
     font-size: 20px;
     font-family: sans-serif;
 }
@@ -52,7 +75,7 @@ ul.sub-menu li{
     opacity: 1;
 }
 
-ul.sub-menu li hover{
+ul.sub-menu li:hover {
     color: white;
     background-color: #444444;
 }
@@ -61,8 +84,8 @@ ul.sub-menu li hover{
 
 .intro{
     max-width: 800px;
-    margin: 0 auto;
-    padding; 20px;
+    margin: 50px;
+    padding: 20px;
     background-color: #ffffff;
     color: #080937;
     text-align: center;
@@ -94,9 +117,9 @@ ul.sub-menu li hover{
 }
 
 /* Footer Section Styles */
-footer{
-    background-color: #080937;
-    color: #ffffff;
+footer {
+    background-color: #ffffff;
+    color: #5f5887;
     padding: 20px;
     text-align: center;
 }
