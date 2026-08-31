@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-    background-color: #080937ff;
+    background-color: #1f1f40;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@ body {
 /* Header Section Styles */
 .header {
     background-color: #ffffff;
-    color: #080937ff;
+    color: #1f1f40;
     padding: 20px;
     margin-left: 50px;
     text-align: left;
@@ -33,12 +33,12 @@ main {
     margin: 5;
     height: 50px;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #b2bbf9;
 }
 
 .nav_class > ul {
-    background-color: #ffffff;
-    color: #080937ff;
+    background-color: #b2bbf9;
+    color: #000000;
     font-size: 20px;
     font-family: sans-serif;
 }
@@ -56,7 +56,7 @@ main {
 
 ul.sub-menu{
     position:absolute;
-    background-color: #ffffff;
+    background-color: #1f1f40;
     list-style-type: none;
     width: 125px;
     padding-left: 0px;
@@ -80,29 +80,19 @@ ul.sub-menu li:hover {
     background-color: #444444;
 }
 
-/* Intro Section Styles */
+/* Homepage Section Styles */
 
-.intro{
+.homepage {
+    display: flex;
+    align-items: center;
     max-width: 800px;
-    margin: 50px;
+    margin: 50px auto;
     padding: 20px;
-    background-color: #ffffff;
-    color: #080937;
+    background-color: #e6f0fd;
+    color: #000000;
     text-align: center;
     border: 1px solid #000000;
 }
-
-.intro h2{
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.intro p{
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-/* Homepage Section Styles */
 
 .homepage > h2{
     font-size: 24px;
@@ -118,8 +108,8 @@ ul.sub-menu li:hover {
 
 /* Footer Section Styles */
 footer {
-    background-color: #ffffff;
-    color: #5f5887;
+    background-color: #b2bbf9;
+    color: #000000;
     padding: 20px;
     text-align: center;
 }
