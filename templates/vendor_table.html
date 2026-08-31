@@ -37,10 +37,24 @@
         </ul>
     </nav>
  
-    <main>
+    <main class="table-page">
         <h2>Vendor Table</h2>
-        <p>Hello World</p>
-        <p>{{search}}</p>
+        <div class = "sort-buttons">
+            <a href="/vendor_table?sort=name" class="sort-button">Sort by Name A-Z</a>
+            <a href="/vendor_table?sort=name_desc" class="sort-button">Sort by Name Z-A</a>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Business Name</th>
+
+                    <th>Vendor Name</th>
+
+                    <th>Contact Number</th>
+                </tr>
+            </table>
+        </div>
     </main>
     <footer>
         <p>&copy; Emma Thomas 2026</p>
