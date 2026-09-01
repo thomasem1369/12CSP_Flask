@@ -41,13 +41,19 @@ def render_business_table():
     cursor = db.cursor()
     # Show all if no search query filter
     if not search_query:
-        cursor.execute("SELECT b.*, v.* FROM business b \
+        cursor.execute("SELECT b.*, STRING_AGG(v.vendor_name, ', ') as vendor_names, \
+                STRING_AGG(v.contact_number, ', ') as contact_numbers \
+                FROM business b \
                 INNER JOIN business_vendors bv ON b.business_id = bv.business_id \
-                INNER JOIN vendors v ON v.vendor_id = bv.vendor_id")
+                INNER JOIN vendors v ON v.vendor_id = bv.vendor_id \
+                GROUP BY b.business_id")
     else:
-        cursor.execute("SELECT b.*, v.* FROM business b \
+        cursor.execute("SELECT b.*, STRING_AGG(v.vendor_name, ', ') as vendor_names, \
+                    STRING_AGG(v.contact_number, ', ') as contact_numbers \
+                    FROM business b \
                     INNER JOIN business_vendors bv ON b.business_id = bv.business_id \
                     INNER JOIN vendors v ON v.vendor_id = bv.vendor_id \
+                    GROUP BY b.business_id \
                     WHERE business_name = ?", (search_query,))
     rows = cursor.fetchall()
     result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
