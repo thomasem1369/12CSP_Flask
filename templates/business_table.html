@@ -57,10 +57,24 @@
                 <th>Designed NZ</th>
 
                 <th>Assembled NZ</th>
+
+                <th>Vendor name</th>
+
+                <th>Contact number</th>
             </tr>
-
-
+        {% for row in result %}
+            <tr>
+                <td>{{row['business_name']}}</td>
+                <td>{{"✓" if row['nz_business'] == "1" else "✗"}}</td>
+                <td>{{"✓" if row['handmade_nz'] == "1" else "✗"}}</td>
+                <td>{{"✓" if row['designed_nz'] == "1" else "✗"}}</td>
+                <td>{{"✓" if row['assembled_nz'] == "1" else "✗"}}</td>
+                <td>{{row['vendor_name']}}</td>
+                <td>{{row['contact_number']}}</td>
+            </tr>
+        {% endfor %}
         </table>
+
     </div>
 
 

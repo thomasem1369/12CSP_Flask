@@ -32,28 +32,52 @@ def render_search():
     db.close()
     return render_template('search.html', result=result)
 
-@app.route('/add_business')
-def render_add_business():
-    return render_template('add_business.html')
-
-@app.route('/add_vendor')
-def render_add_vendor():
-    return render_template('add_vendor.html')
-
-@app.route('/link_business_vendor')
-def render_link_business_vendor():
-    return render_template('link_business_vendor.html')
-
 @app.route('/business_table')
 def render_business_table():   
-    return render_template('business_table.html')
+    search_query = request.args.get('business_name')
+    sort = request.args.get('sort')
+    order = request.args.get('order')
+    db =  create_connection(DATABASE)
+    cursor = db.cursor()
+    # Show all if no search query filter
+    if not search_query:
+        cursor.execute("SELECT b.*, v.* FROM business b \
+                INNER JOIN business_vendors bv ON b.business_id = bv.business_id \
+                INNER JOIN vendors v ON v.vendor_id = bv.vendor_id")
+    else:
+        cursor.execute("SELECT b.*, v.* FROM business b \
+                    INNER JOIN business_vendors bv ON b.business_id = bv.business_id \
+                    INNER JOIN vendors v ON v.vendor_id = bv.vendor_id \
+                    WHERE business_name = ?", (search_query,))
+    rows = cursor.fetchall()
+    result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
+    #print(result)
+    db.close()
+    return render_template('business_table.html', result=result)
+
 
 @app.route('/vendor_table')
 def render_vendor_table():
+    search_query = request.args.get('search')
+    db =  create_connection(DATABASE)
+    cursor = db.cursor()
+    cursor.execute("SELECT * from business WHERE business_name = ?", (search_query,))
+    rows = cursor.fetchall()
+    result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
+    print(result)
+    db.close()
     return render_template('vendor_table.html')
 
 @app.route('/locations_table')
 def render_locations_table():
+    search_query = request.args.get('search')
+    db =  create_connection(DATABASE)
+    cursor = db.cursor()
+    cursor.execute("SELECT * from business WHERE business_name = ?", (search_query,))
+    rows = cursor.fetchall()
+    result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
+    print(result)
+    db.close()
     return render_template('locations_table.html') 
 
 
