@@ -36,15 +36,12 @@ def render_search():
 def render_business_table():   
     search_query = request.args.get('business_name')
     sort = request.args.get('sort')
-    order = request.args.get('order', "asc")
 
-    # Toggle the sort order
-    if order == "asc":
-        order = "asc"
+    # Match and link the HTML query parameter values
+    if sort == "name_desc":
+        order_sql = "ORDER BY b.business_name DESC"
     else:
-        order = "desc"
-
-    order_sql = "ORDER BY business_name ASC" if order == "asc" else "ORDER BY business_name DESC"
+        order_sql = "ORDER BY b.business_name ASC"
 
     db =  create_connection(DATABASE)
     cursor = db.cursor()
@@ -76,17 +73,13 @@ def render_business_table():
 @app.route('/locations_table')
 def render_locations_table():
     search_query = request.args.get('search')
-
     sort = request.args.get('sort')
-    order = request.args.get('order', "asc")
 
-    # Toggle the sort order
-    if order == "asc":
-        order = "asc"
+    # Match and linkthe HTML query parameter values
+    if sort == "name_desc":
+        order_sql = "ORDER BY b.business_name DESC"
     else:
-        order = "desc"
-
-    order_sql = "ORDER BY business_name ASC" if order == "asc" else "ORDER BY business_name DESC"
+        order_sql = "ORDER BY b.business_name ASC"
 
     db =  create_connection(DATABASE)
     cursor = db.cursor()
