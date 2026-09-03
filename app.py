@@ -36,25 +36,37 @@ def render_search():
 def render_business_table():   
     search_query = request.args.get('business_name')
     sort = request.args.get('sort')
-    order = request.args.get('order')
+    order = request.args.get('order', "asc")
+
+    # Toggle the sort order
+    if order == "asc":
+        order = "asc"
+    else:
+        order = "desc"
+
+    order_sql = "ORDER BY business_name ASC" if order == "asc" else "ORDER BY business_name DESC"
+
     db =  create_connection(DATABASE)
     cursor = db.cursor()
+
     # Show all if no search query filter
     if not search_query:
-        cursor.execute("SELECT b.*, STRING_AGG(v.vendor_name, ', ') as vendor_names, \
+        cursor.execute(f"SELECT b.*, STRING_AGG(v.vendor_name, ', ') as vendor_names, \
                 STRING_AGG(v.contact_number, ', ') as contact_numbers \
                 FROM business b \
                 INNER JOIN business_vendors bv ON b.business_id = bv.business_id \
                 INNER JOIN vendors v ON v.vendor_id = bv.vendor_id \
-                GROUP BY b.business_id")
+                GROUP BY b.business_id \
+                {order_sql}")
     else:
-        cursor.execute("SELECT b.*, STRING_AGG(v.vendor_name, ', ') as vendor_names, \
+        cursor.execute(f"SELECT b.*, STRING_AGG(v.vendor_name, ', ') as vendor_names, \
                     STRING_AGG(v.contact_number, ', ') as contact_numbers \
                     FROM business b \
                     INNER JOIN business_vendors bv ON b.business_id = bv.business_id \
                     INNER JOIN vendors v ON v.vendor_id = bv.vendor_id \
                     GROUP BY b.business_id \
-                    WHERE business_name = ?", (search_query,))
+                    WHERE business_name = ? \
+                    {order_sql}", (search_query,))
     rows = cursor.fetchall()
     result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
     #print(result)
@@ -64,6 +76,18 @@ def render_business_table():
 @app.route('/locations_table')
 def render_locations_table():
     search_query = request.args.get('search')
+
+    sort = request.args.get('sort')
+    order = request.args.get('order', "asc")
+
+    # Toggle the sort order
+    if order == "asc":
+        order = "asc"
+    else:
+        order = "desc"
+
+    order_sql = "ORDER BY business_name ASC" if order == "asc" else "ORDER BY business_name DESC"
+
     db =  create_connection(DATABASE)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM locations;")
@@ -71,20 +95,22 @@ def render_locations_table():
     locations = [dict(row) for row in rows] # Convert rows to a list of
     # Show all if no search query filter
     if not search_query:
-       cursor.execute("SELECT b.business_id, b.business_name, \
+       cursor.execute(f"SELECT b.business_id, b.business_name, \
                 STRING_AGG(l.location_name, ', ') AS location_names \
                 FROM business b \
                 INNER JOIN business_locations bl ON b.business_id = bl.business_id \
                 INNER JOIN locations l ON l.location_id = bl.location_id \
-                GROUP BY b.business_id, b.business_name;")
+                GROUP BY b.business_id, b.business_name \
+                {order_sql}")
     else:
-        cursor.execute("SELECT b.business_id, b.business_name, \
+        cursor.execute(f"SELECT b.business_id, b.business_name, \
                        STRING_AGG(l.location_name, ', ') AS location_names \
                        FROM business b \
                        INNER JOIN business_locations bl ON b.business_id = bl.business_id \
                        INNER JOIN locations l ON l.location_id = bl.location_id \
                        GROUP BY b.business_id, b.business_name; \
-                       WHERE business_name = ?", (search_query,))
+                       WHERE business_name = ? \
+                       {order_sql}", (search_query,))
     rows = cursor.fetchall()
     result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
     #print(result)
