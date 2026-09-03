@@ -35,11 +35,79 @@
         </ul>
     </nav>
  
-    <main>
-        <h2>Information Profile</h2>
-        <p>Hello World</p>
-        <p>{{search}}</p>
-    </main>
+    <main class=""profile-page">
+        <h2>{{ business["business_name"]}}</h2>
+        
+        <!-- Business Information-->
+
+        <h3>Business Information</h3>
+
+        <table>
+            <tr>
+                <th>NZ Business</th>
+                <td>
+                    {{ "Yes" if business["nz_business"] == "1" else "No" }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Handmade NZ</th>
+                <td>
+                    {{ "Yes" if business["handmade_nz"] == "1" else "No" }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Designed NZ</th>
+                <td>
+                    {{ "Yes" if business["designed_nz"] == "1" else "No" }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Assembled NZ</th>
+                <td>
+                    {{ "Yes" if business["assembled_nz"] == "1" else "No" }}
+                </td>
+            </tr>
+        </table>    
+
+        <!-- Vendor Information -->
+
+        <h3>Vendor Information</h3>
+
+        <table>
+                <tr>
+                    <th>Vendor Name</th>
+                    <th>Contact Number</th>
+                </tr>
+                {% for vendor in vendors %}
+                <tr>
+                    <td>{{ vendor["vendor_name"] }}</td>
+                    <td>{{ vendor["contact_number"] }}</td>
+                </tr>
+                {% endfor %}
+        </table>
+
+        <!-- Location Information -->
+
+        <h3>Location Information</h3>
+
+        <table>
+
+            <tr>
+                <th>Location</th>
+            </tr>
+
+            {% for location in locations %}
+            <tr>
+                <td>{{ location["location_name"] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+</main>
     <footer>
         <p>&copy; Emma Thomas 2026</p>
     </footer>
