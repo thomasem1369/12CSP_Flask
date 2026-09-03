@@ -61,30 +61,35 @@ def render_business_table():
     db.close()
     return render_template('business_table.html', result=result)
 
-
-@app.route('/vendor_table')
-def render_vendor_table():
-    search_query = request.args.get('search')
-    db =  create_connection(DATABASE)
-    cursor = db.cursor()
-    cursor.execute("SELECT * from business WHERE business_name = ?", (search_query,))
-    rows = cursor.fetchall()
-    result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
-    print(result)
-    db.close()
-    return render_template('vendor_table.html')
-
 @app.route('/locations_table')
 def render_locations_table():
     search_query = request.args.get('search')
     db =  create_connection(DATABASE)
     cursor = db.cursor()
-    cursor.execute("SELECT * from business WHERE business_name = ?", (search_query,))
+    cursor.execute("SELECT * FROM locations;")
+    rows = cursor.fetchall()
+    locations = [dict(row) for row in rows] # Convert rows to a list of
+    # Show all if no search query filter
+    if not search_query:
+       cursor.execute("SELECT b.business_id, b.business_name, \
+                STRING_AGG(l.location_name, ', ') AS location_names \
+                FROM business b \
+                INNER JOIN business_locations bl ON b.business_id = bl.business_id \
+                INNER JOIN locations l ON l.location_id = bl.location_id \
+                GROUP BY b.business_id, b.business_name;")
+    else:
+        cursor.execute("SELECT b.business_id, b.business_name, \
+                       STRING_AGG(l.location_name, ', ') AS location_names \
+                       FROM business b \
+                       INNER JOIN business_locations bl ON b.business_id = bl.business_id \
+                       INNER JOIN locations l ON l.location_id = bl.location_id \
+                       GROUP BY b.business_id, b.business_name; \
+                       WHERE business_name = ?", (search_query,))
     rows = cursor.fetchall()
     result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
-    print(result)
+    #print(result)
     db.close()
-    return render_template('locations_table.html') 
+    return render_template('locations_table.html', result=result, locations=locations)
 
 
 if __name__ == "__main__":

@@ -26,9 +26,6 @@
                         <a href="/business_table">Business Table</a>
                     </li>
                     <li>
-                        <a href="/vendor_table">Vendor Table</a>
-                    </li>
-                    <li>
                        <a href="/locations_table">Locations</a>
                     </li>
                 </ul>
@@ -49,7 +46,18 @@
             <table>
                 <tr>
                     <th>Business Name</th>
+
+                    {% for location in locations %}
+                        <th>{{location['location_name']}}</th>
+                    {% endfor %}
                 </tr>
+            {% for row in result %}
+                <tr>
+                    <td>{{row['business_name']}}</td>
+                    {% for location in locations %}
+                        <td>{{'✓' if location['location_name'] in row['location_names'] else '✗'}}</td>
+                    {% endfor %}
+            {% endfor %}
             </table>
     </main>
     <footer>

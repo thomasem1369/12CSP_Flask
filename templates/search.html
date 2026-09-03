@@ -26,9 +26,6 @@
                         <a href="/business_table">Business Table</a>
                     </li>
                     <li>
-                        <a href="/vendor_table">Vendor Table</a>
-                    </li>
-                    <li>
                        <a href="/locations_table">Locations</a>
                     </li>
                 </ul>
@@ -47,8 +44,6 @@
     </div>
     <main>
         <h2>Search</h2>
-        <p>Hello World</p>
-        <p></p>
         {% for row in result %}
         <p>{{row['business_id']}} {{row['business_name']}}</p>
         {% endfor %}
