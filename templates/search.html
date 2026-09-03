@@ -35,19 +35,34 @@
     </nav>
     
     <!-- Search bar -->
-    <div class="search">
+    <main class="search-page">
+        <h2>Search Businesses</h2>
         <form method="get" action="/search">
         <span class="material-symbols-outlined">search</span>
         <input class="search-input" name="search" type="search" placeholder="Search Vendor">
         <input type="submit" value="Search">
         </form>
-    </div>
-    <main>
-        <h2>Search</h2>
-        {% for row in result %}
-        <p>{{row['business_id']}} {{row['business_name']}}</p>
-        {% endfor %}
+
+        <!-- Search Suggestions -->
+         <datalist id = "search-suggestions">
+
+            {% for business in businesses %}
+                <option value="{{ business['business_name'] }}">
+            {% endfor %}
+
+            {% for vendor in vendors %}
+                <option value="{{ vendor['vendor_name'] }}">
+            {% endfor %}
+
+        </datalist>
+
+        <!-- Search Results -->
+
+        <div class="search-results">
+            
+ 
     </main>
+
     <footer>
         <p>&copy; Emma Thomas 2026</p>
     </footer>
