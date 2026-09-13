@@ -5,17 +5,33 @@ html, body {
 body {
     background-color: #1f1f40;
     color: #ffffff;
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
 /* Header Section Styles */
+
 .header {
-    background-color: #ffffff;
-    color: #1f1f40;
-    padding: 20px;
-    margin-left: 50px;
-    text-align: left;
+    background-color: #1f1f40;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Logo */
+
+.logo {
+    position: static;
+}
+
+/* Logo image */
+
+.logo img {
+    width: 70px;
+    height: 70px;
 }
 
 /* Fills all remaining space */
@@ -106,6 +122,77 @@ ul.sub-menu li:hover {
     text-align: center;
 }
 
+/* Search Section Styles */
+
+.search-page{
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.search-page h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.search-page form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-input{
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.search-button{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #b2bbf9;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+.search-button:hover{
+    background-color: #1f1f40;
+    color: #ffffff;
+}
+
+/* Search Results */
+
+.search-results{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.business-box{
+    background-color: #e6f0fd;
+    color: #000000;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+.business-box:hover{
+    background-color: #b2bbf9;
+    color: #000000;
+}
+
+.business-box h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 /* Footer Section Styles */
 footer {
     background-color: #b2bbf9;
@@ -115,7 +202,6 @@ footer {
 }
 
 /* Search Section Styles */
-
 .search{
     display:flex;
     align-items: center;

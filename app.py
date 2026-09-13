@@ -25,12 +25,38 @@ def render_search():
     search_query = request.args.get('search')
     db =  create_connection(DATABASE)
     cursor = db.cursor()
-    cursor.execute("SELECT * from business WHERE business_name = ?", (search_query,))
+    cursor.execute("SELECT * from business WHERE business_name LIKE ?", 
+                   (f"%{search_query}%",))
     rows = cursor.fetchall()
     result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
     print(result)
     db.close()
     return render_template('search.html', result=result)
+
+@app.route('/information_profile/<int:business_id>')
+def render_information_profile(business_id):
+
+    db =  create_connection(DATABASE)
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * FROM business WHERE business_id = ?", (business_id,))
+    business_row = cursor.fetchone()
+    business = dict(business_row) if business_row else None
+
+    cursor.execute("SELECT v.vendor_name, v.contact_number FROM vendors v \
+                    INNER JOIN business_vendors bv ON v.vendor_id = bv.vendor_id \
+                    WHERE bv.business_id = ?", (business_id,))
+    vendor_rows = cursor.fetchall()
+    vendors = [dict(row) for row in vendor_rows]
+
+    cursor.execute("SELECT l.location_name FROM locations l \
+                    INNER JOIN business_locations bl ON l.location_id = bl.location_id \
+                    WHERE bl.business_id = ?", (business_id,))
+    location_rows = cursor.fetchall()
+    locations = [dict(row) for row in location_rows]
+
+    db.close()
+    return render_template('information_profile.html', business=business, vendors=vendors, locations=locations)
 
 @app.route('/business_table')
 def render_business_table():   

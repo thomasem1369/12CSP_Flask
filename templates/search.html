@@ -2,25 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Page Title -->
     <title>Search</title>
+
+    <!-- Link to the CSS stylesheet -->
     <link type="text/css" rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Search</h1>
+
+    <!-- Page Heading -->
+    <header class="header">
+
+    <!-- Welly Collective logo -->
+    <div class="logo">
+        <a href="/">
+            <img src="/static/css/images/welly_collective_logo.png" alt="Welly Collective logo">
+        </a>
+    </div>
+
+    <!-- Page title -->
+    <h1>Search</h1>
+
     </header>
+
     <!-- Navigation bar -->
     <nav class="nav_class">
         <ul>
+            <!-- Link to homepage -->
             <li>
                 <a href="/">Homepage</a>
             </li>
+            <!-- Link to search page -->
             <li>
                 <a href="/search">Search</a>
             </li>
+            <!-- Tables dropdown menu -->
             <li>
                 Tables
                 <span class = "arrow">&#9660;</span>
+                <!-- Sub-menu for tables -->
                 <ul class="sub-menu">
                     <li>
                         <a href="/business_table">Business Table</a>
@@ -34,31 +55,36 @@
         </ul>
     </nav>
     
-    <!-- Search bar -->
+    <!-- Mainn search section -->
     <main class="search-page">
+
+        <!-- Search Form -->
         <h2>Search Businesses</h2>
+
         <form method="get" action="/search">
+
         <span class="material-symbols-outlined">search</span>
+
         <input class="search-input" name="search" type="search" placeholder="Search Vendor">
-        <input type="submit" value="Search">
+
+        <input class="search-button" type="submit" value="Search">
+
         </form>
-
-        <!-- Search Suggestions -->
-         <datalist id = "search-suggestions">
-
-            {% for business in businesses %}
-                <option value="{{ business['business_name'] }}">
-            {% endfor %}
-
-            {% for vendor in vendors %}
-                <option value="{{ vendor['vendor_name'] }}">
-            {% endfor %}
-
-        </datalist>
 
         <!-- Search Results -->
 
         <div class="search-results">
+
+            {% for row in result %}
+
+            <a href="/information_profile/{{ row['business_id'] }}" class="business-box">
+
+                    <h3>{{ row['business_name'] }}</h3>
+                
+            </a>
+
+            {% endfor %}
+        </div>
             
  
     </main>
