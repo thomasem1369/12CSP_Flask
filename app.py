@@ -23,13 +23,21 @@ def render_home():
 @app.route('/search')
 def render_search():
     search_query = request.args.get('search')
+
     db =  create_connection(DATABASE)
     cursor = db.cursor()
-    cursor.execute("SELECT * from business WHERE business_name LIKE ?", 
-                   (f"%{search_query}%",))
+
+    if not search_query:
+        cursor.execute("SELECT * FROM business ORDER BY business_name ASC")
+    else:
+        cursor.execute(
+            "SELECT * FROM business WHERE business_name LIKE ? ORDER BY business_name ASC",
+            (f"%{search_query}%",)
+        )
+    
     rows = cursor.fetchall()
     result = [dict(row) for row in rows] # Convert rows to a list of dictionaries instead of numbers
-    print(result)
+
     db.close()
     return render_template('search.html', result=result)
 
