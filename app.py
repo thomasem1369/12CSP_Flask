@@ -32,7 +32,7 @@ def render_search():
     """Display the search results for businesses based on the search query."""
     search_query = request.args.get('search')
 
-    db =  create_connection(DATABASE)
+    db = create_connection(DATABASE)
     cursor = db.cursor()
     if not search_query:
         cursor.execute("SELECT * FROM business ORDER BY business_name ASC")
@@ -51,7 +51,7 @@ def render_search():
 @app.route('/information_profile/<int:business_id>')
 def render_information_profile(business_id):
     """Display the information profile for a specific business."""
-    db =  create_connection(DATABASE)
+    db = create_connection(DATABASE)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM business WHERE business_id = ?",
                    (business_id,))
@@ -86,7 +86,7 @@ def render_business_table():
         order_sql = "ORDER BY b.business_name DESC"
     else:
         order_sql = "ORDER BY b.business_name ASC"
-    db =  create_connection(DATABASE)
+    db = create_connection(DATABASE)
     cursor = db.cursor()
     # Show all if no search query filter
     if not search_query:
@@ -110,7 +110,6 @@ def render_business_table():
                     GROUP BY b.business_id \
                     WHERE business_name = ? \
                     {order_sql}", (search_query,))
-
     rows = cursor.fetchall()
     result = [dict(row) for row in rows]
     # Convert rows to a list of dictionaries instead of numbers
@@ -128,7 +127,7 @@ def render_locations_table():
         order_sql = "ORDER BY b.business_name DESC"
     else:
         order_sql = "ORDER BY b.business_name ASC"
-    db =  create_connection(DATABASE)
+    db = create_connection(DATABASE)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM locations;")
     rows = cursor.fetchall()
