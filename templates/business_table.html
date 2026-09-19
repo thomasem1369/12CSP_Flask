@@ -54,45 +54,43 @@
     <main class="table-page">
         <h2>Business Table</h2>
 
-    <div class = "sort-buttons">
-        <a href="/business_table?sort=name" class="sort-button">Sort by Name A-Z</a>
-        <a href="/business_table?sort=name_desc" class="sort-button">Sort by Name Z-A</a>
-    </div>
+        <div class = "table-controls">
+            <a href="/business_table?sort=name" class="sort-button">A-Z</a>
+            <a href="/business_table?sort=name_desc" class="sort-button">Z-A</a>
+        </div>
 
-    <div class="table-container">
-        <table>
-            <tr>
-                <th>Business Name</th>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Business Name</th>
 
-                <th>NZ Business</th>
+                    <th>NZ Business</th>
 
-                <th>Handmade NZ</th>
+                    <th>Handmade NZ</th>
 
-                <th>Designed NZ</th>
+                    <th>Designed NZ</th>
 
-                <th>Assembled NZ</th>
+                    <th>Assembled NZ</th>
 
-                <th>Vendor names</th>
+                    <th>Vendor names</th>
 
-                <th>Contact numbers</th>
-            </tr>
-        {% for row in result %}
-            <tr>
-                <td>{{row['business_name']}}</td>
-                <td>{{"✓" if row['nz_business'] == "1" else "✗"}}</td>
-                <td>{{"✓" if row['handmade_nz'] == "1" else "✗"}}</td>
-                <td>{{"✓" if row['designed_nz'] == "1" else "✗"}}</td>
-                <td>{{"✓" if row['assembled_nz'] == "1" else "✗"}}</td>
-                <td>{{row['vendor_names']}}</td>
-                <td>{{row['contact_numbers']}}</td>
-            </tr>
-        {% endfor %}
-        </table>
-
-    </div>
-
-
+                    <th>Contact numbers</th>
+                </tr>
+                {% for row in result %}
+                <tr>
+                    <td>{{row['business_name']}}</td>
+                    <td>{{"✓" if row['nz_business'] == "1" else "✗"}}</td>
+                    <td>{{"✓" if row['handmade_nz'] == "1" else "✗"}}</td>
+                    <td>{{"✓" if row['designed_nz'] == "1" else "✗"}}</td>
+                    <td>{{"✓" if row['assembled_nz'] == "1" else "✗"}}</td>
+                    <td>{{row['vendor_names']}}</td>
+                    <td>{{row['contact_numbers']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </main>
+
     <footer>
         <p>&copy; Emma Thomas 2026</p>
     </footer>
