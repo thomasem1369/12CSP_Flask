@@ -6,7 +6,7 @@ from sqlite3 import Error
 
 
 app = Flask(__name__)
-DATABASE = "vendor_management_system.db"
+DATABASE = "vendor_management_system_3.db"
 
 
 def create_connection(db_file):

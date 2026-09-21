@@ -78,7 +78,10 @@
             {% for row in result %}
 
             <a href="/information_profile/{{ row['business_id'] }}" class="business-box">
-
+                
+                <img src="/static/css/images/{{ row['logo'] }}" 
+                alt="{{ row['business_name'] }} logo">
+                    
                     <h3>{{ row['business_name'] }}</h3>
                 
             </a>

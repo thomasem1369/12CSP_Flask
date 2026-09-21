@@ -51,7 +51,12 @@
     </nav>
  
  
-    <main class=    "profile-page">
+    <main class="profile-page">
+
+        <img class="business-logo"
+        src="/static/css/images/{{ business['logo'] }}"
+        alt="{{ business['business_name'] }} logo">
+
         <h2>{{ business["business_name"]}}</h2>
         
         <!-- Business Information-->

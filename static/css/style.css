@@ -210,6 +210,13 @@ a:hover {
     margin-bottom: 10px;
 }
 
+.business-box img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
 /* Information Profile Section Styles */
 .profile-page > h2 {
     text-align: center;
@@ -243,6 +250,14 @@ a:hover {
 
 .profile-page th {
     background-color: #b2bbf9;
+}
+
+.business-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 20px auto;
 }
 
 /* Table Styles */
