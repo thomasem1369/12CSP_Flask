@@ -108,6 +108,11 @@ a:hover {
     text-decoration: none;
 }
 
+.nav_class li.active {
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
 /* Homepage Section Styles */
 
 .homepage {
