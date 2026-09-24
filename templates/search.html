@@ -24,8 +24,6 @@
     <!-- Page title -->
     <h1>Search</h1>
 
-    </header>
-
     <!-- Navigation bar -->
     <nav class="nav_class">
         <ul>
@@ -54,6 +52,8 @@
 
         </ul>
     </nav>
+
+</header>
     
     <!-- Mainn search section -->
     <main class="search-page">
@@ -79,7 +79,7 @@
 
             <a href="/information_profile/{{ row['business_id'] }}" class="business-box">
                 
-                <img src="/static/css/images/{{ row['logo'] }}" 
+                <img src="/static/css/images/{{ row['logo'] }}" class = "business_logo"
                 alt="{{ row['business_name'] }} logo">
                     
                     <h3>{{ row['business_name'] }}</h3>
