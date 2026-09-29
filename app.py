@@ -71,7 +71,6 @@ def render_search():
 @app.route('/information_profile/<int:business_id>')
 def render_information_profile(business_id):
     """Display the information profile for a specific business."""
-
     # Connect to the database
     db = create_connection(DATABASE)
     cursor = db.cursor()
@@ -150,7 +149,7 @@ def render_business_table():
                 INNER JOIN vendors v ON v.vendor_id = bv.vendor_id \
                 GROUP BY b.business_id \
                 {order_sql}")
-        
+
     # Otherwise show the business matching the search
     else:
         cursor.execute(f"SELECT b.*, STRING_AGG(v.vendor_name, ', ') \
@@ -180,7 +179,6 @@ def render_business_table():
 @app.route('/locations_table')
 def render_locations_table():
     """Display the locations table with search and sorting functionality."""
-
     # Get the location search valye from the URL
     search_query = request.args.get('search')
 

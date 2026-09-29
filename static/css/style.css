@@ -21,6 +21,8 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+    z-index: 10;
 }
 
 /* Logo */
@@ -77,6 +79,7 @@ main {
 ul.sub-menu{
     position:absolute;
     background-color: #ffffff;
+    z-index: 20;
     list-style-type: none;
     width: 125px;
     padding-left: 0px;
@@ -182,7 +185,7 @@ a:hover {
     gap: 20px;
     height: 100%;
     width: max-content;
-    animation: scroll 30s linear infinite; /* Controls autoscroll speed */
+    animation: scroll 50s linear infinite; /* Controls autoscroll speed */
 }
 
 /* Translucent Full-Height Images */
