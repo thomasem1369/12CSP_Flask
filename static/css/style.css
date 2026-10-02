@@ -63,6 +63,7 @@ main {
     font-size: 20px;
     font-family: "Roboto", sans-serif;
     gap: 30px;
+    flex-wrap: wrap; /* Allows items to look ok on smaller screen sizes */
 }
 
 .nav_class > ul >li {
@@ -286,9 +287,46 @@ a:hover {
     height: 100px;
     object-fit: contain;
     margin-bottom: 10px;
+    border-radius: 50px;
 }
 
 /* Information Profile Section Styles */
+.vendor-profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.vendor-profile .business-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin: 0;
+}
+
+.vendor-info {
+    flex: 1;
+    padding-top: 30px;
+}
+
+.vendor-info h3 {
+    margin-top: 0;
+}
+
+.vendor-info table {
+    width: 100%;
+}
+
+.profile-page {
+    padding: 20px;
+}
+
+.profile-page img {
+    border-radius: 100px;
+}
+
 .profile-page > h2 {
     text-align: center;
     font-size: 30px;
@@ -310,6 +348,8 @@ a:hover {
     border-collapse: collapse;
     background-color: #ffffff;
     color: #000000;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .profile-page th,
