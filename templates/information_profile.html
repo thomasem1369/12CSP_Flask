@@ -49,80 +49,72 @@
     </nav>
 </header>
  
-    <main class="profile-page">
+<main class="profile-page">
 
-        <h2>{{ business["business_name"]}}</h2>
+        <h2>{{ business["business_name"] }}</h2>
         
+        <!-- Top Section: Logo + Vendor Information aligned side-by-side -->
         <div class="vendor-profile">
-
-        <img class="business-logo"
-        src="/static/css/images/{{ business['logo'] }}"
-        alt="{{ business['business_name'] }} logo">
+            <img class="business-logo"
+                 src="/static/css/images/{{ business['logo'] }}"
+                 alt="{{ business['business_name'] }} logo">
         
-                <!-- Vendor Information -->
-                <div class="vendor-info">
-
+            <div class="vendor-info">
                 <h3>Vendor Information</h3>
-                
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Vendor Name</th>
+                            <th>Contact Number</th>
+                        </tr>
+                        {% for vendor in vendors %}
+                        <tr>
+                            <td>{{ vendor["vendor_name"] }}</td>
+                            <td>{{ vendor["contact_number"] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>      
+        </div> <!-- Properly closing vendor-profile container -->
+
+        <!-- Business Information Section -->
+        <div class="profile-section-block">
+            <h3>Business Information</h3>
+            <div class="table-container">
                 <table>
                     <tr>
-                        <th>Vendor Name</th>
-                        <th>Contact Number</th>
+                        <th>NZ Business</th>
+                        <th>Handmade NZ</th>
+                        <th>Designed NZ</th>
+                        <th>Assembled NZ</th>
                     </tr>
-                    {% for vendor in vendors %}
                     <tr>
-                        <td>{{ vendor["vendor_name"] }}</td>
-                        <td>{{ vendor["contact_number"] }}</td>
+                        <td>{{ "✓" if business["nz_business"] == "1" else "✗" }}</td>
+                        <td>{{ "✓" if business["handmade_nz"] == "1" else "✗" }}</td>
+                        <td>{{ "✓" if business["designed_nz"] == "1" else "✗" }}</td>
+                        <td>{{ "✓" if business["assembled_nz"] == "1" else "✗" }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Location Information Section -->
+        <div class="profile-section-block">
+            <h3>Location Information</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Location</th>
+                    </tr>
+                    {% for location in locations %}
+                    <tr>
+                        <td>{{ location["location_name"] }}</td>
                     </tr>
                     {% endfor %}
                 </table>
-            </div>  
-        </div>      
-        
-        <!-- Business Information-->
-
-        <h3>Business Information</h3>
-        <table>
-            <tr>
-                <th>NZ Business</th>
-                <th>Handmade NZ</th>
-                <th>Designed NZ</th>
-                <th>Assembled NZ</th>
-            </tr>
-            <tr>
-                <td>
-                    {{ "✓" if business["nz_business"] == "1" else "✗" }}
-                </td>
-                <td>
-                    {{ "✓" if business["handmade_nz"] == "1" else "✗" }}
-                </td>
-                <td>
-                    {{ "✓" if business["designed_nz"] == "1" else "✗" }}
-                </td>
-                <td>
-                    {{ "✓" if business["assembled_nz"] == "1" else "✗" }}
-                </td>
-            </tr>
-        </table>
-
-        
-        <!-- Location Information -->
-
-        <h3>Location Information</h3>
-
-        <table>
-
-            <tr>
-                <th>Location</th>
-            </tr>
-
-            {% for location in locations %}
-            <tr>
-                <td>{{ location["location_name"] }}</td>
-            </tr>
-            {% endfor %}
-
-        </table>
+            </div>
+        </div>
 
     </main>
     <footer>

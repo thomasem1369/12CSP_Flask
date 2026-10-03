@@ -40,7 +40,7 @@ def render_search():
     # Get the search entered by the user from the URL
     search_query = request.args.get('search')
 
-    # Connecet to the database
+    # Connect to the database
     db = create_connection(DATABASE)
     cursor = db.cursor()
 
@@ -48,23 +48,34 @@ def render_search():
     if not search_query:
         cursor.execute("SELECT * FROM business ORDER BY business_name ASC")
 
-    # Otherwise search for businesses containing entered text
+    # Otherwise search and sort by match relevance, then alphabetically
     else:
         cursor.execute(
-            "SELECT * FROM business WHERE business_name LIKE ? "
-            "ORDER BY business_name ASC",
-            (f"%{search_query}%",))
+            """
+            SELECT * FROM business 
+            WHERE business_name LIKE ? 
+            ORDER BY 
+                CASE 
+                    -- Highest priority: Name starts with the query
+                    WHEN business_name LIKE ? THEN 1
+                    -- Lower priority: Contains the query anywhere else
+                    ELSE 2 
+                END,
+                business_name ASC
+            """,
+            (f"%{search_query}%", f"{search_query}%")
+        )
 
     # Get the matching rows from the database
     rows = cursor.fetchall()
 
-    # Convert rows to a list of dictionaries instead of numbers
+    # Convert rows to a list of dictionaries
     result = [dict(row) for row in rows]
 
     # Close the database connection
     db.close()
 
-    # Send the search results to the search HTML page
+    # Send the search results and query string to the template
     return render_template('search.html', result=result, search_query=search_query)
 
 

@@ -340,7 +340,6 @@ a:hover {
     margin: 0 auto 25px;
     padding: 20px;
     border: 1px solid #000000;
-    border-radius: 12px;
 }
 
 .profile-page table {
@@ -348,7 +347,6 @@ a:hover {
     border-collapse: collapse;
     background-color: #ffffff;
     color: #000000;
-    border-radius: 8px;
     overflow: hidden;
 }
 

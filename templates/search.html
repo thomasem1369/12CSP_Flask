@@ -72,25 +72,22 @@
         </form>
 
         <!-- Search Results -->
-
         <div class="search-results">
-            <!-- Search Results -->
-<div class="search-results">
 
-    {% if search_query and not result %}
-        <p class="no-results-message">
-            No businesses found matching "{{ search_query }}". Please try a different search term.
-        </p>
-    {% else %}
-        {% for row in result %}
-            <a href="/information_profile/{{ row['business_id'] }}" class="business-box">
-                <img src="/static/css/images/{{ row['logo'] }}" class="business_logo" alt="{{ row['business_name'] }} logo">
-                <h3>{{ row['business_name'] }}</h3>
-            </a>
-        {% endfor %}
-    {% endif %}
+            {% if search_query and not result %}
+                <p class="no-results-message">
+                    No businesses found matching "{{ search_query }}". Please try a different search term.
+                </p>
+            {% else %}
+                {% for row in result %}
+                    <a href="/information_profile/{{ row['business_id'] }}" class="business-box">
+                        <img src="/static/css/images/{{ row['logo'] }}" class="business_logo" alt="{{ row['business_name'] }} logo">
+                        <h3>{{ row['business_name'] }}</h3>
+                    </a>
+                {% endfor %}
+            {% endif %}
 
-</div>
+        </div>
  
     </main>
 
