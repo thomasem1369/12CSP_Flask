@@ -69,7 +69,7 @@
                 <tr>
                     <td>{{row['business_name']}}</td>
                     {% for location in locations %}
-                    <td>{{'✓' if location['location_name'] in row['location_names'] else '✗'}}</td>
+                    <td class="tick-cross-centering">{{'✅' if location['location_name'] in row['location_names'] else '❌'}}</td>
                     {% endfor %}
                 </tr>
                 {% endfor %}

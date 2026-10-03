@@ -90,10 +90,10 @@
                         <th>Assembled NZ</th>
                     </tr>
                     <tr>
-                        <td>{{ "✓" if business["nz_business"] == "1" else "✗" }}</td>
-                        <td>{{ "✓" if business["handmade_nz"] == "1" else "✗" }}</td>
-                        <td>{{ "✓" if business["designed_nz"] == "1" else "✗" }}</td>
-                        <td>{{ "✓" if business["assembled_nz"] == "1" else "✗" }}</td>
+                        <td class="tick-cross-centering">{{ "✅" if business["nz_business"] == "1" else "❌" }}</td>
+                        <td class="tick-cross-centering">{{ "✅" if business["handmade_nz"] == "1" else "❌" }}</td>
+                        <td class="tick-cross-centering">{{ "✅" if business["designed_nz"] == "1" else "❌" }}</td>
+                        <td class="tick-cross-centering">{{ "✅" if business["assembled_nz"] == "1" else "❌" }}</td>
                     </tr>
                 </table>
             </div>

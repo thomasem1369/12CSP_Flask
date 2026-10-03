@@ -78,10 +78,10 @@
                 {% for row in result %}
                 <tr>
                     <td>{{row['business_name']}}</td>
-                    <td>{{"✓" if row['nz_business'] == "1" else "✗"}}</td>
-                    <td>{{"✓" if row['handmade_nz'] == "1" else "✗"}}</td>
-                    <td>{{"✓" if row['designed_nz'] == "1" else "✗"}}</td>
-                    <td>{{"✓" if row['assembled_nz'] == "1" else "✗"}}</td>
+                    <td class="tick-cross-centering">{{"✅" if row['nz_business'] == "1" else "❌"}}</td>
+                    <td class="tick-cross-centering">{{"✅" if row['handmade_nz'] == "1" else "❌"}}</td>
+                    <td class="tick-cross-centering">{{"✅" if row['designed_nz'] == "1" else "❌"}}</td>
+                    <td class="tick-cross-centering">{{"✅" if row['assembled_nz'] == "1" else "❌"}}</td>
                     <td>{{row['vendor_names']}}</td>
                     <td>{{row['contact_numbers']}}</td>
                 </tr>

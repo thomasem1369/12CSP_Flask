@@ -432,22 +432,15 @@ a:hover {
     background-color: #e6f0fd;
 }
 
+/* Centering tick and cross emojis */
+.table-container td.tick-cross-centering {
+    text-align: center;
+}
+
 /* Footer Section Styles */
 footer {
     background-color: #c0c6ee;
     color: #000000;
     padding: 20px;
     text-align: center;
-}
-
-/* Search Section Styles */
-.search{
-    display:flex;
-    align-items: center;
-    background: #ffffff;
-}
-
-.search-input{
-    font-size: 16px;
-    color: #84939b;
 }
