@@ -65,7 +65,7 @@ def render_search():
     db.close()
 
     # Send the search results to the search HTML page
-    return render_template('search.html', result=result)
+    return render_template('search.html', result=result, search_query=search_query)
 
 
 @app.route('/information_profile/<int:business_id>')
