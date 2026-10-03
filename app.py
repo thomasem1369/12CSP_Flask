@@ -51,15 +51,16 @@ def render_search():
     # Otherwise search and sort by match relevance, then alphabetically
     else:
         cursor.execute(
+            # Trialled and chose Gemini's code over mine
             """
-            SELECT * FROM business 
-            WHERE business_name LIKE ? 
-            ORDER BY 
-                CASE 
+            SELECT * FROM business
+            WHERE business_name LIKE ?
+            ORDER BY
+                CASE
                     -- Highest priority: Name starts with the query
                     WHEN business_name LIKE ? THEN 1
                     -- Lower priority: Contains the query anywhere else
-                    ELSE 2 
+                    ELSE 2
                 END,
                 business_name ASC
             """,
@@ -76,7 +77,8 @@ def render_search():
     db.close()
 
     # Send the search results and query string to the template
-    return render_template('search.html', result=result, search_query=search_query)
+    return render_template('search.html', result=result,
+                           search_query=search_query)
 
 
 @app.route('/information_profile/<int:business_id>')
@@ -239,7 +241,7 @@ def render_locations_table():
                     WHERE business_name = ? \
                     {order_sql}", (search_query,))
 
-    # Get the results fromt he database
+    # Get the results from the database
     rows = cursor.fetchall()
 
     # Convert the rows into dictionaries

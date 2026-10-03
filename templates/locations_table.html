@@ -49,25 +49,36 @@
     </nav>
     </header>
 
+    <!-- Main Locations Table -->
     <main class="table-page">
         <h2>Locations</h2>
-
-        <div class = "table-controls">
-            <a href="/locations_table?sort=name" class="sort-button">A-Z</a>
-            <a href="/locations_table?sort=name_desc" class="sort-button">Z-A</a>
-        </div>
 
         <div class="table-container">
             <table>
                 <tr>
-                    <th>Business Name</th>
+                    <th>
+                        <div class="th-content">
+                            <span>Business Name</span>
+                            <div class="sort-buttons-inline">
+                                <a href="/locations_table?sort=name" class="sort-button">A-Z</a>
+                                <a href="/locations_table?sort=name_desc" class="sort-button">Z-A</a>
+                            </div>
+                        </div>
+                    </th>
+                    <!-- Column headers for each location from database -->
                     {% for location in locations %}
                     <th>{{location['location_name']}}</th>
                     {% endfor %}
                 </tr>
+
+                <!-- Rows displaying checkmarks if a business is in that location -->
                 {% for row in result %}
                 <tr>
-                    <td>{{row['business_name']}}</td>
+                    <td>
+                        <a href="{{ url_for('render_information_profile', business_id=row['business_id']) }}" class="business-link">
+                            {{ row['business_name'] }}
+                        </a>
+                    </td>
                     {% for location in locations %}
                     <td class="tick-cross-centering">{{'✅' if location['location_name'] in row['location_names'] else '❌'}}</td>
                     {% endfor %}
@@ -78,7 +89,7 @@
     </main>
 
     <footer>
-        <p>&copy; Emma Thomas 2026</p>
+        <p>&copy; Emma Thomas & Welly Collective 2026</p>
     </footer>
 </body>
 </html>

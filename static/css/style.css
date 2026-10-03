@@ -1,7 +1,12 @@
+/* Welly Collective Vendor Management System stylesheet. */
+/* Controls the layout, navigation, search page, tables and footer. */
+
+/* Make the page fill the available browser height. */
 html, body {
     height: 100%;
 }
 
+/* Set the page background and use flexbox for the overall page layout. */
 body {
     background-color: #1f1f40;
     color: #ffffff;
@@ -14,6 +19,7 @@ body {
 
 /* Header Section Styles */
 
+/* Styles the logo and page title at the top of each page. */
 .header {
     background-color: #c0c6ee;
     color: #000000;
@@ -25,14 +31,12 @@ body {
     z-index: 10;
 }
 
-/* Logo */
-
+/* Welly Collective Logo Positioning */
 .logo {
     position: static;
 }
 
-/* Logo image */
-
+/* Welly Collective Logo Image Sizing */
 .logo img {
     width: 70px;
     height: 70px;
@@ -44,14 +48,15 @@ main {
 } 
 
 /* Nav Bar Styles */
+/* Styles the navigation shared by every page. */
 
+/* Centre the navigation links inside the navigation bar. */
 .nav_class {
     margin-left: auto;
     display: flex;
     align-items: center;
 }
 
-/* Nav List Reset */
 .nav_class > ul {
     display: flex; /* Aligns list items side-by-side cleanly */
     align-items: center;
@@ -66,6 +71,7 @@ main {
     flex-wrap: wrap; /* Allows items to look ok on smaller screen sizes */
 }
 
+/* Place the main navigation options beside each other. */
 .nav_class > ul >li {
     list-style-type:none;
     padding: 5px 25px;
@@ -77,27 +83,31 @@ main {
     border-radius: 6px;
 }
 
-ul.sub-menu{
-    position:absolute;
+ul.sub-menu {
+    position: absolute;
+    top: 100%;                  
+    left: 50%;                  
+    transform: translateX(-50%); /* Shifts left by 50% of dropdown width to center */
     background-color: #ffffff;
-    z-index: 20;
+    z-index: 2;
     list-style-type: none;
-    width: 125px;
-    padding-left: 0px;
-    margin-left: -15px;
-    padding-top: 5px;
+    width: 130px;               /* Keep narrower fixed width */
+    padding: 5px 0;             
+    margin: 0;                 
     opacity: 0;
+    visibility: hidden;         /* Prevents accidental hover triggers when invisible */
     border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Adds visual depth */
 }
 
-ul.sub-menu li{
-    padding-left:25px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+ul.sub-menu li {
+    padding: 8px 12px;         /* Equal padding for text alignment */
+    text-align: center;         /* Centers links cleanly inside narrower dropdown */
 }
 
-.nav_class li:hover .sub-menu{
+.nav_class li:hover .sub-menu {
     opacity: 1;
+    visibility: visible;
 }
 
 ul.sub-menu li:hover {
@@ -291,6 +301,7 @@ a:hover {
 }
 
 /* Information Profile Section Styles */
+
 .vendor-profile {
     display: flex;
     align-items: flex-start;
@@ -370,6 +381,7 @@ a:hover {
 }
 
 /* Table Styles */
+
 .table-page {
     padding: 20px;
 }
@@ -430,6 +442,48 @@ a:hover {
 
 .table-container tr:hover td {
     background-color: #e6f0fd;
+}
+
+/* Inline Table Header Sorting Controls */
+.th-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.sort-buttons-inline {
+    display: flex;
+    gap: 4px;
+}
+
+.sort-button {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #1f1f40;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.sort-button:hover {
+    background-color: #dae9fb;
+    color: #000000;
+}
+
+/* Business Name Link Styling inside Table */
+.table-container td a.business-link {
+    color: #1f1f40;
+    font-weight: 600;
+    text-decoration: none; /* Removes underline */
+}
+
+.table-container td a.business-link:hover {
+    color: #b2bbf9;
+    text-decoration: none; /* Removes underline */
 }
 
 /* Centering tick and cross emojis */
