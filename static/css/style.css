@@ -205,7 +205,7 @@ a:hover {
     width: auto;
     min-width: 50vw;       /* Ensures images scale large enough to fill screen height */
     object-fit: cover;
-    opacity: 0.45;         /* Makes images translucent (adjust between 0.2 - 0.6) */
+    opacity: 0.45;         /* Makes images translucent */
 }
 
 @keyframes scroll {
