@@ -10,10 +10,10 @@
 
 Homepage (/): Overview of the Vendor Management System featuring an scrolling image carousel.
 
-Search (/search): Search for businesses by name and view quick profile links.
+Search (/search): Search for businesses by name, click on a name to view that businesses information profile.
 
-Business Table (/business_table): Full spreadsheet view of businesses, vendors, contact details, and production attributes (sortable A–Z / Z–A).
+Business Table (/business_table): Full spreadsheet view of all businesses, vendors, contact details (sortable A–Z / Z–A).
 
-Locations (/locations_table): Full spreadsheet view of all businesses locations.
+Locations (/locations_table): Full spreadsheet view of all businesses and their locations (sortable A–Z / Z–A).
 
 Business Profile (/information_profile/<business_id>): Groups together information present in the business table and location table and presents it for just one business. This page can be accessed via clicking on a business name in the search page, business table or location table.
