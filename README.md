@@ -6,7 +6,9 @@
 
 3. Execute either "Flask run" or "python app.py" to run the program.
 
-Homepage: Overview of the Vendor Management System featuring an scrolling image carousel.
+--- Website Pages ---
+
+Homepage (/): Overview of the Vendor Management System featuring an scrolling image carousel.
 
 Search (/search): Search for businesses by name and view quick profile links.
 
@@ -14,4 +16,4 @@ Business Table (/business_table): Full spreadsheet view of businesses, vendors, 
 
 Locations (/locations_table): Full spreadsheet view of all businesses locations.
 
-Business Profile (/information_profile/<business_id>): Groups together information present in the business table and location table and presents it for just one business.
+Business Profile (/information_profile/<business_id>): Groups together information present in the business table and location table and presents it for just one business. This page can be accessed via clicking on a business name in the search page, business table or location table.
